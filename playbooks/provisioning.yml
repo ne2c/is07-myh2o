@@ -1,0 +1,6 @@
+---
+- name: installs all components
+  hosts: 127.0.0.1
+  connection: local
+  roles:
+    - common
