@@ -4,3 +4,5 @@
   connection: local
   roles:
     - common
+    # ----------------------------------
+    - ruby

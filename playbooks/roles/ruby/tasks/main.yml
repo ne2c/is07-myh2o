@@ -1,0 +1,17 @@
+---
+- name: ruby build environment
+  yum: name={{ item }} state=present
+  # http://vault.centos.org/7.0.1406/os/Source/SPackages/
+  with_items:
+    - autoconf
+    - gdbm-devel
+    - ncurses-devel
+    - libdb-devel
+    - libffi-devel
+    - openssl-devel
+    - libyaml-devel
+    - readline-devel
+    - tk-devel
+    - procps
+    # ----------------------------------
+    - rubygems-devel
