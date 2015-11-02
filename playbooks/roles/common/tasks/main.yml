@@ -4,6 +4,7 @@
   with_items:
     - epel-release
     # ----------------------------------
+    - git
     - unzip
     - vim
     - zip
