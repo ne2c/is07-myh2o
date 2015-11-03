@@ -1,0 +1,14 @@
+---
+- name: install
+  yum: name={{ item }} state=present
+  with_items:
+    - mariadb-devel
+    - mariadb-server
+    - MySQL-python
+- name: database settings
+  ini_file: dest={{ item.value.dest }} section={{ item.value.section }} option={{ item.value.option }} value={{ item.value.value }}
+  with_dict: "{{ db_config }}"
+  notify:
+  - restart service
+- name: start service
+  service: name=mariadb state=started enabled=yes

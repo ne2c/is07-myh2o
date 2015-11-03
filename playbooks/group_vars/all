@@ -1,3 +1,19 @@
 ntp_server_1: 210.173.160.27
 ntp_server_2: 210.173.160.57
 ntp_server_3: 210.173.160.87
+db_config:
+  mariadb_server:
+    dest: /etc/my.cnf.d/server.cnf
+    section: mysqld
+    option: character-set-server
+    value: utf8
+  mariadb_client:
+    dest: /etc/my.cnf.d/client.cnf
+    section: client
+    option: default-character-set
+    value: utf8
+db_config_example:
+  my:
+    dest: /etc/my.cnf
+    section: mysqld
+    section: mysqld_safe
