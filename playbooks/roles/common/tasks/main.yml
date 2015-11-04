@@ -8,6 +8,8 @@
     - unzip
     - vim
     - zip
+- name: disable firewall
+  service: name=firewalled state=stopped enabled=no
 # for Japan
 - name: time synchronization (install)
   yum: name=chrony state=present
