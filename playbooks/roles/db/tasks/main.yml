@@ -1,5 +1,5 @@
 ---
-- name: install
+- name: install package (mariadb)
   yum: name={{ item }} state=present
   with_items:
     - mariadb-devel
@@ -8,7 +8,6 @@
 - name: database settings
   ini_file: dest={{ item.value.dest }} section={{ item.value.section }} option={{ item.value.option }} value={{ item.value.value }}
   with_dict: "{{ db_config }}"
-  notify:
-  - restart service
-- name: start service
+  notify: restart service (mariadb)
+- name: start service (mariadb)
   service: name=mariadb state=started enabled=yes
