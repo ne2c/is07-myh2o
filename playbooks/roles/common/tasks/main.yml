@@ -14,14 +14,15 @@
 - name: time synchronization (install)
   yum: name=chrony state=present
 - name: delete existing settings
-  lineinfile: dest=/etc/chrony.conf regexp="^server" state=absent
+  lineinfile: dest=/etc/chrony.conf regexp="^server.+?cent" state=absent
 - name: server settings
-  lineinfile: dest=/etc/chrony.conf line="server -4 {{ item }} iburst"
+  lineinfile: dest=/etc/chrony.conf line="server {{ item }} iburst"
   with_items:
     # http://www.jst.mfeed.ad.jp/service/02.html
     - "{{ ntp_server_1 }}"
     - "{{ ntp_server_2 }}"
     - "{{ ntp_server_3 }}"
+  notify: restart service (chronyd)
 - name: use local time
   file: src=/usr/share/zoneinfo/Asia/Tokyo dest=/etc/localtime state=link force=yes
 - name: hardware > system time
