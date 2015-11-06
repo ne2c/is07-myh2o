@@ -1,6 +1,6 @@
 # Init
 for i in epel-release ansible; do
-  yum --quiet --assumeyes install $i
+  sudo yum --quiet --assumeyes install $i
 done
 # Provisioning
 ansible-playbook /vagrant/playbooks/provisioning.yml
