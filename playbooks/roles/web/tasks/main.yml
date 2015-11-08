@@ -1,0 +1,8 @@
+---
+- name: install package (nginx)
+  yum: name=nginx state=present
+- name: config file
+  get_url: url=https://github.com/h5bp/server-configs-nginx/raw/master/nginx.conf dest=/etc/nginx/conf.d/
+  notify: restart service (nginx)
+- name: start service (nginx)
+  service: name=nginx state=started enabled=yes
