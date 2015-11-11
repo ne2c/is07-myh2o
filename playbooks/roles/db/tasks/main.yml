@@ -11,3 +11,17 @@
   notify: restart service (mariadb)
 - name: start service (mariadb)
   service: name=mariadb state=started enabled=yes
+- name: init
+  mysql_user: name=root password=vagrant host=localhost
+  ignore_errors: true
+- name: access control permissions (root user)
+  mysql_user: name=root host={{ item }} state=absent login_user=root login_password=vagrant
+  with_items:
+    - "{{ ansible_fqdn }}"
+    - 127.0.0.1
+    - ::1
+- name: access control permissions (anonymous users)
+  mysql_user: name="" host={{ item }} state=absent login_user=root login_password=vagrant
+  with_items:
+    - localhost
+    - "{{ ansible_fqdn }}"
