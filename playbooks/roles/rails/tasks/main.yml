@@ -6,3 +6,5 @@
     - libxslt-devel
 - name: build environment (therubyracer)
   yum: name=gcc-c++ state=present
+- name: build environment (rmagick)
+  yum: name=ImageMagick-devel state=present
