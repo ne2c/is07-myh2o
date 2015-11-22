@@ -5,7 +5,3 @@
   sudo: yes
   roles:
     - common
-    # ----------------------------------
-    - db
-    - ruby
-    - rails
