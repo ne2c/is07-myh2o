@@ -5,3 +5,5 @@
   sudo: yes
   roles:
     - common
+  environment:
+    http_proxy: "{{ extra_http_proxy }}"
